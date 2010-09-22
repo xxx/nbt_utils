@@ -1,3 +1,5 @@
+require File.expand_path('nbt/tag/exceptions', File.dirname(__FILE__))
+
 require File.expand_path('nbt/tag', File.dirname(__FILE__))
 require File.expand_path('nbt/tag/end', File.dirname(__FILE__))
 require File.expand_path('nbt/tag/byte', File.dirname(__FILE__))

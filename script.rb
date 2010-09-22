@@ -29,3 +29,7 @@ Zlib::GzipReader.open('doc/bigtest.nbt') do |f|
 end
 
 puts @compound.to_s
+
+#puts @compound.find_tag('Test')
+puts @compound.find_tags(/(?:byte|int)Test/)
+puts @compound.find_tags 'intasdf'

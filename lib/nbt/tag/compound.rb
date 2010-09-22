@@ -5,12 +5,13 @@ module NBT
 
       def initialize(io, named = true)
         @payload = []
+        @tag_names = []
         read_name(io) if named
 
         until (last_byte = io.read(1)[0]) == NBT::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
           i = klass.new(io, true)
-          @payload << i
+          add_tag(i)
         end
       end
 
@@ -31,6 +32,21 @@ module NBT
 
       def to_nbt_string
 
+      end
+
+      def find_tag(name)
+        @payload.detect { |tag| tag.name =~ /#{name}/ }
+      end
+
+      def find_tags(name)
+        @payload.select { |tag| tag.name =~ /#{name}/ }
+      end
+
+      def add_tag(tag)
+        raise MissingCompoundPayloadTagNameError if tag.name.nil?
+        raise DuplicateCompoundPayloadTagNameError if @tag_names.include?(tag.name)
+        @tag_names << tag.name
+        @payload << tag
       end
     end
   end
