@@ -11,7 +11,7 @@ module NBT
         @payload = io.read(l)
       end
 
-      def self.type
+      def self.type_id
         8
       end
 

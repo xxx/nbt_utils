@@ -20,7 +20,7 @@ require 'zlib'
 #puts @compound.to_s
 #puts
 
-Zlib::GzipReader.open('bigtest.nbt') do |f|
+Zlib::GzipReader.open('doc/bigtest.nbt') do |f|
   # ostensibly this will always be a single TAG_Compound, per the spec
   last_byte = f.read(1)[0]
   klass = NBT::Tag.tag_type_to_class(last_byte)

@@ -7,14 +7,14 @@ module NBT
         @payload = []
         read_name(io) if named
 
-        until (last_byte = io.read(1)[0]) == NBT::Tag::End.type
+        until (last_byte = io.read(1)[0]) == NBT::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
           i = klass.new(io, true)
           @payload << i
         end
       end
 
-      def self.type
+      def self.type_id
         10
       end
 

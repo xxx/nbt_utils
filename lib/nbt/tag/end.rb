@@ -7,7 +7,7 @@ module NBT
         @name = ''
       end
 
-      def self.type
+      def self.type_id
         0
       end
 

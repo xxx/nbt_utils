@@ -9,7 +9,7 @@ module NBT
         @payload = ::BinData::FloatBe.new.read(io).value
       end
 
-      def self.type
+      def self.type_id
         5
       end
 

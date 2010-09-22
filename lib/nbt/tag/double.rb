@@ -9,7 +9,7 @@ module NBT
         @payload = ::BinData::DoubleBe.new.read(io).value
       end
 
-      def self.type
+      def self.type_id
         6
       end
 

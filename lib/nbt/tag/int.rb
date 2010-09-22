@@ -9,7 +9,7 @@ module NBT
         @payload = ::BinData::Int32be.new.read(io).value
       end
 
-      def self.type
+      def self.type_id
         3
       end
 

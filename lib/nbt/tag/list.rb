@@ -15,7 +15,7 @@ module NBT
         end
       end
 
-      def self.type
+      def self.type_id
         9
       end
 

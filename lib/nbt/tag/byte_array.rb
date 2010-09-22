@@ -10,7 +10,7 @@ module NBT
         @payload = io.read(len).bytes.to_a
       end
 
-      def self.type
+      def self.type_id
         7
       end
 
