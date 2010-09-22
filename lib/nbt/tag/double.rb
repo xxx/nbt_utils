@@ -17,7 +17,7 @@ module NBT
         (' ' * indent) + "TAG_Double#{@name ? "(\"#{@name}\")" : ''}: #{@payload}"
       end
 
-      def to_nbt_string
+      def to_nbt_string(named = true)
 
       end
     end

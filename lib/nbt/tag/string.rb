@@ -6,7 +6,7 @@ module NBT
       def initialize(io, named = true)
         read_name(io) if named
 
-        l = io.read(2).unpack('n').first
+        l = ::BinData::Int16be.new.read(io).value.to_i
 
         @payload = io.read(l)
       end
@@ -19,7 +19,7 @@ module NBT
         (' ' * indent) + "TAG_String#{@name ? "(\"#{@name}\")" : ''}: #{@payload}"
       end
 
-      def to_nbt_string
+      def to_nbt_string(named = true)
 
       end
     end

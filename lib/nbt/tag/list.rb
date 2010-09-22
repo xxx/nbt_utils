@@ -7,7 +7,7 @@ module NBT
         @payload = []
         read_name(io) if named
 
-        tag_id = io.read(1)[0].to_i
+        tag_id = io.read(1).bytes.first.to_i
         @tag_type = NBT::Tag.tag_type_to_class(tag_id)
         len = ::BinData::Int32be.new.read(io).value
         len.times do
@@ -30,7 +30,7 @@ module NBT
         ret
       end
 
-      def to_nbt_string
+      def to_nbt_string(named = true)
 
       end
     end

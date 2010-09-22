@@ -8,7 +8,7 @@ module NBT
         @tag_names = []
         read_name(io) if named
 
-        until (last_byte = io.read(1)[0]) == NBT::Tag::End.type_id
+        until (last_byte = io.read(1).bytes.first) == NBT::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
           i = klass.new(io, true)
           add_tag(i)
@@ -30,7 +30,7 @@ module NBT
         ret
       end
 
-      def to_nbt_string
+      def to_nbt_string(named = true)
 
       end
 
