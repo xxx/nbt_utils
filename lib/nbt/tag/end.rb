@@ -16,7 +16,7 @@ module NBT
       end
 
       def to_nbt_string(named = false)
-        
+        binary_type_id
       end
     end
   end

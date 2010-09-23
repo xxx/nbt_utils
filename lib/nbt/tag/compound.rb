@@ -30,7 +30,14 @@ module NBT
       end
 
       def to_nbt_string(named = true)
+        result = binary_type_id
+        result += name_to_nbt_string if named
 
+        result = @payload.inject(result) do |r, load|
+          r + load.to_nbt_string(true)
+        end
+
+        result + NBT::Tag::End.new(nil).to_nbt_string
       end
 
       def find_tag(name)

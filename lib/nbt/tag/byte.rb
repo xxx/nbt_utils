@@ -18,7 +18,9 @@ module NBT
       end
 
       def to_nbt_string(named = true)
-
+        result = binary_type_id
+        result += name_to_nbt_string if named
+        result + ::BinData::Int8be.new.read(@payload).to_binary_s
       end
     end
   end

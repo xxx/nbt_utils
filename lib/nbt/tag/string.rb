@@ -6,9 +6,8 @@ module NBT
       def initialize(io, named = true)
         read_name(io) if named
 
-        l = ::BinData::Int16be.new.read(io).value.to_i
-
-        @payload = io.read(l)
+        # Tag names are actually TAG_Strings, so yay.
+        @payload = NBT::TagName.new.read(io).data
       end
 
       def self.type_id
@@ -20,7 +19,11 @@ module NBT
       end
 
       def to_nbt_string(named = true)
-
+        result = binary_type_id
+        result += name_to_nbt_string if named
+        tag = NBT::TagName.new
+        tag.data = @payload
+        result + tag.to_binary_s
       end
     end
   end

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'bundler'
 Bundler.require :default
 
@@ -18,7 +20,11 @@ Zlib::GzipReader.open('doc/test.nbt') do |f|
 end
 
 puts @compound.to_s
-puts
+
+puts @compound.to_nbt_string
+#Zlib::GzipWriter.open('lolwut.nbt') do |gz|
+#  gz.write @compound.to_nbt_string
+#end
 
 Zlib::GzipReader.open('doc/bigtest.nbt') do |f|
   # ostensibly this will always be a single TAG_Compound, per the spec
