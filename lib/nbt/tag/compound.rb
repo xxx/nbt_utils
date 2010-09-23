@@ -10,8 +10,7 @@ module NBT
 
         until (last_byte = io.read(1).bytes.first) == NBT::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
-          i = klass.new(io, true)
-          add_tag(i)
+          add_tag klass.new(io, true)
         end
       end
 

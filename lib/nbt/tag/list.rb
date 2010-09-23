@@ -20,7 +20,6 @@ module NBT
       end
 
       def to_s(indent = 0)
-
         ret = (' ' * indent) + "TAG_List#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries of type TAG_#{@tag_type.to_s.split('::').last}\n"
         ret += (' ' * indent) + "{\n"
         @payload.each do |load|

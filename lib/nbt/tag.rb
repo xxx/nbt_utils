@@ -8,11 +8,7 @@ module NBT
     end
 
     def read_name(io)
-      # If the length is a real TAG_Short, it's actually supposed to be
-      # signed, but this is a length measurement and it better not be negative.
-      l = io.read(2).unpack('n').first
-
-      @name = io.read(l)
+      @name = NBT::TagName.new.read(io).data
     end
 
     def tag_type_to_class(tag_type)

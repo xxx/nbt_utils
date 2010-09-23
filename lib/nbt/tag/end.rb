@@ -15,7 +15,7 @@ module NBT
         ''
       end
 
-      def to_nbt_string(named = true)
+      def to_nbt_string(named = false)
         
       end
     end
