@@ -6,6 +6,11 @@ module NBT
     def self.included(base)
       base.extend ClassMethods
     end
+
+    def initialize(io, named = true)
+      read_name(io) if named
+      @payload = self.class.payload_class.new.read(io)
+    end
     
     def type_id
       self.class.type_id
@@ -51,6 +56,11 @@ module NBT
         end
 
         @type_id
+      end
+
+      def payload_class(new_klass = nil)
+        @payload_class = new_klass if new_klass
+        @payload_class
       end
     end
 

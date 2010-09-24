@@ -4,12 +4,7 @@ module NBT
       include NBT::Tag
 
       type_id 6
-
-      def initialize(io, named = true)
-        read_name(io) if named
-
-        @payload = ::BinData::DoubleBe.new.read(io)
-      end
+      payload_class ::BinData::DoubleBe
     end
   end
 end
