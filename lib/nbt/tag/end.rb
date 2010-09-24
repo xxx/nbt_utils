@@ -3,12 +3,10 @@ module NBT
     class End
       include NBT::Tag
 
+      type_id 0
+
       def initialize(input, named = false)
         @name = ''
-      end
-
-      def self.type_id
-        0
       end
 
       def to_s(indent = 0)

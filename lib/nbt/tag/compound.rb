@@ -3,6 +3,8 @@ module NBT
     class Compound
       include NBT::Tag
 
+      type_id 10
+
       def initialize(io, named = true)
         @payload = []
         @tag_names = []
@@ -12,10 +14,6 @@ module NBT
           klass = tag_type_to_class(last_byte)
           add_tag klass.new(io, true)
         end
-      end
-
-      def self.type_id
-        10
       end
 
       def to_s(indent = 0)

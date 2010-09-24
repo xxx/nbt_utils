@@ -3,6 +3,8 @@ module NBT
     class List
       include NBT::Tag
 
+      type_id 9
+
       def initialize(io, named = true)
         @payload = []
         read_name(io) if named
@@ -13,10 +15,6 @@ module NBT
         len.times do
           @payload << @tag_type.new(io, false)
         end
-      end
-
-      def self.type_id
-        9
       end
 
       def to_s(indent = 0)

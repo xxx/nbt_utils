@@ -3,16 +3,14 @@ module NBT
     class ByteArray
       include NBT::Tag
 
+      type_id 7
+
       def initialize(io, named = true)
         read_name(io) if named
 
         len = ::BinData::Int32be.new.read(io).value
         # signedness of the bytes in the array is not defined in the spec.
         @payload = ::BinData::Array.new(:type => :uint8, :initial_length => len).read(io)
-      end
-
-      def self.type_id
-        7
       end
 
       def to_s(indent = 0)
