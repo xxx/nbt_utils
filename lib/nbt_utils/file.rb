@@ -1,6 +1,4 @@
-require 'zlib'
-
-module NBT
+module NBTUtils
   class File
     def initialize(path = nil)
       @path = path
@@ -10,7 +8,7 @@ module NBT
       Zlib::GzipReader.open(path) do |f|
         # ostensibly this will always be a single TAG_Compound, per the spec
         last_byte = f.read(1).bytes.first
-        klass = NBT::Tag.tag_type_to_class(last_byte)
+        klass = NBTUtils::Tag.tag_type_to_class(last_byte)
 
         @tag = klass.new(f, true)
       end

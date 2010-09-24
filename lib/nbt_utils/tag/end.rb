@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class End
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 0
 

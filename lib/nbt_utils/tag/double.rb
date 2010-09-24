@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class Double # signed, per spec
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 6
       payload_class ::BinData::DoubleBe

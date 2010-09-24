@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    nbt_utils (0.0.1)
+      bindata (~> 1.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -7,4 +13,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bindata
+  bindata (~> 1.2)
+  bundler (>= 1.0.0)
+  nbt_utils!

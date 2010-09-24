@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class Float # signed, per spec
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 5
       payload_class ::BinData::FloatBe

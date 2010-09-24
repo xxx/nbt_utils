@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class List
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 9
 
@@ -10,7 +10,7 @@ module NBT
         read_name(io) if named
 
         tag_id = io.read(1).bytes.first.to_i
-        @tag_type = NBT::Tag.tag_type_to_class(tag_id)
+        @tag_type = NBTUtils::Tag.tag_type_to_class(tag_id)
         len = ::BinData::Int32be.new.read(io).value
         len.times do
           @payload << @tag_type.new(io, false)

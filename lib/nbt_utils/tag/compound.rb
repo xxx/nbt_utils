@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class Compound
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 10
 
@@ -10,7 +10,7 @@ module NBT
         @tag_names = []
         read_name(io) if named
 
-        until (last_byte = io.read(1).bytes.first) == NBT::Tag::End.type_id
+        until (last_byte = io.read(1).bytes.first) == NBTUtils::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
           add_tag klass.new(io, true)
         end
@@ -34,7 +34,7 @@ module NBT
           r + load.to_nbt_string(true)
         end
 
-        result + NBT::Tag::End.new(nil).to_nbt_string
+        result + NBTUtils::Tag::End.new(nil).to_nbt_string
       end
 
       def find_tag(name)

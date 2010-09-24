@@ -1,7 +1,7 @@
-module NBT
+module NBTUtils
   module Tag
     class ByteArray
-      include NBT::Tag
+      include NBTUtils::Tag
 
       type_id 7
 

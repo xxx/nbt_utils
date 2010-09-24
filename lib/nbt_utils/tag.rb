@@ -1,4 +1,4 @@
-module NBT
+module NBTUtils
   module Tag
     attr_reader :name
     attr_reader :payload
@@ -34,24 +34,24 @@ module NBT
     end
 
     def read_name(io)
-      @name = NBT::TagName.new.read(io).data
+      @name = NBTUtils::TagName.new.read(io).data
     end
 
     def name_to_nbt_string
-      nm = NBT::TagName.new
+      nm = NBTUtils::TagName.new
       nm.data = @name
       nm.to_binary_s
     end
 
     def tag_type_to_class(tag_type)
-      NBT::Tag.tag_type_to_class(tag_type)
+      NBTUtils::Tag.tag_type_to_class(tag_type)
     end
 
     module ClassMethods
       def type_id(new_id = nil)
         if new_id
           @type_id = new_id
-          NBT::Tag.add_tag_type(new_id, self)
+          NBTUtils::Tag.add_tag_type(new_id, self)
         end
 
         @type_id

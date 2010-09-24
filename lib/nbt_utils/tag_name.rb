@@ -1,4 +1,4 @@
-module NBT
+module NBTUtils
   class TagName < BinData::Record
     # Spec says this is a TAG_Short, which is signed. Staying strict
     # though this may really be unsigned in practice.
