@@ -1,9 +1,9 @@
 nbt_utils
 =========
 
-Some classes for handling Minecraft .nbt files.
+Some classes for handling [Minecraft](http://minecraft.net) .nbt files.
 
-See http://www.minecraft.net/docs/NBT.txt for specification info, also mirred in the doc directory.
+See [the spec](http://www.minecraft.net/docs/NBT.txt) for more info, also mirred in the doc directory in a file named `NBT.txt`.
 
 Installation
 ============
@@ -25,4 +25,4 @@ Copyright
 
 Copyright (c) 2010 Michael Dungan, mpd@jesters-court.net, released under the MIT license.
 
-The files `NBT.txt`, `test.nbt`, and `bigtest.nbt` in the `doc` directory are mirred from the Minecraft website.
+The files `NBT.txt`, `test.nbt`, and `bigtest.nbt` in the doc directory are mirrored from the Minecraft website and not covered under the above license.
