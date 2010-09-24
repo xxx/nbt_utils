@@ -3,7 +3,7 @@ nbt_utils
 
 Some classes for handling [Minecraft](http://minecraft.net) .nbt files.
 
-See [the spec](http://www.minecraft.net/docs/NBT.txt) for more info, also mirred in the doc directory in a file named `NBT.txt`.
+See [the spec](http://www.minecraft.net/docs/NBT.txt) for more info, also mirrored in the doc directory in a file named `NBT.txt`.
 
 Installation
 ============
@@ -11,6 +11,8 @@ Installation
 Requires ruby 1.9 minimum. Tested with 1.9.2.
 
     gem install nbt_utils
+
+No sudo. You *are* using [rvm](http://rvm.beginrescueend.com/), right?
 
 Use
 ===
