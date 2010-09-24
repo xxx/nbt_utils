@@ -11,15 +11,15 @@ require 'zlib'
 
 @compound = nil
 
-#Zlib::GzipReader.open('doc/test.nbt') do |f|
-#  # ostensibly this will always be a single TAG_Compound, per the spec
-#  last_byte = f.read(1).bytes.first
-#  klass = NBT::Tag.tag_type_to_class(last_byte)
-#
-#  @compound = klass.new(f, true)
-#end
+Zlib::GzipReader.open('doc/test.nbt') do |f|
+  # ostensibly this will always be a single TAG_Compound, per the spec
+  last_byte = f.read(1).bytes.first
+  klass = NBT::Tag.tag_type_to_class(last_byte)
 
-#puts @compound.to_s
+  @compound = klass.new(f, true)
+end
+
+puts @compound.to_s
 
 #puts @compound.to_nbt_string
 #Zlib::GzipWriter.open('lolwut.nbt') do |gz|
@@ -35,8 +35,12 @@ Zlib::GzipReader.open('doc/bigtest.nbt') do |f|
 end
 
 puts @compound.to_s
-puts @compound.to_nbt_string
 
-#puts @compound.find_tag('Test')
+#puts @compound.to_nbt_string
+#Zlib::GzipWriter.open('biglolwut.nbt') do |gz|
+#  gz.write @compound.to_nbt_string
+#end
+
+puts @compound.find_tag('Test')
 #puts @compound.find_tags(/(?:byte|int)Test/)
 #puts @compound.find_tags 'intasdf'

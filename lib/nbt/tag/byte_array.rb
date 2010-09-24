@@ -18,8 +18,10 @@ module NBT
       end
 
       def to_nbt_string(named = true)
-        result = binary_type_id
-        result += name_to_nbt_string if named
+        result = named ? binary_type_id + name_to_nbt_string : ''
+        len = ::BinData::Int32be.new
+        len.value = @payload.length
+        result += len.to_binary_s
         result + @payload.to_binary_s
       end
     end
