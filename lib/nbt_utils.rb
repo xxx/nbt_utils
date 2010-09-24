@@ -1,4 +1,5 @@
 require 'zlib'
+require 'bindata'
 
 require File.expand_path('nbt_utils/tag/exceptions', File.dirname(__FILE__))
 
