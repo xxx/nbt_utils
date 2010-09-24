@@ -30,7 +30,17 @@ module NBT
       end
 
       def to_nbt_string(named = true)
-
+        result = binary_type_id
+        result += name_to_nbt_string if named
+        type =::BinData::Int8be.new
+        type.value = @tag_type.type_id
+        result += type.to_binary_s
+        len = ::BinData::Int32be.new
+        len.value = @payload.length
+        result += len.to_binary_s
+        @payload.inject(result) do |r, load|
+          r + load.to_nbt_string(false)
+        end
       end
     end
   end

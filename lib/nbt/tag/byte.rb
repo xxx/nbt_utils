@@ -6,7 +6,7 @@ module NBT
       def initialize(io, named = true)
         read_name(io) if named
 
-        @payload = ::BinData::Int8be.new.read(io).value
+        @payload = ::BinData::Int8be.new.read(io)
       end
 
       def self.type_id
@@ -14,13 +14,13 @@ module NBT
       end
 
       def to_s(indent = 0)
-        (' ' * indent) + "TAG_Byte#{@name ? "(\"#{@name}\")" : ''}: #{@payload}"
+        (' ' * indent) + "TAG_Byte#{@name ? "(\"#{@name}\")" : ''}: #{@payload.value}"
       end
 
       def to_nbt_string(named = true)
         result = binary_type_id
         result += name_to_nbt_string if named
-        result + ::BinData::Int8be.new.read(@payload).to_binary_s
+        result + @payload.to_binary_s
       end
     end
   end
