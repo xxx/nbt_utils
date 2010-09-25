@@ -26,6 +26,6 @@ puts @compound.to_s
 #  gz.write @compound.to_nbt_string
 #end
 
-puts @compound.find_tag('Test')
-#puts @compound.find_tags(/(?:byte|int)Test/)
-#puts @compound.find_tags 'intasdf'
+#p @compound.find_tag('Test')
+#p @compound.find_tags(/(?:byte|int)Test/)
+#p @compound.find_tags 'intasdf'

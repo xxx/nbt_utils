@@ -38,11 +38,11 @@ module NBTUtils
       end
 
       def find_tag(name)
-        @payload.detect { |tag| tag.name =~ /#{name}/ }
+        @payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
       end
 
       def find_tags(name)
-        @payload.select { |tag| tag.name =~ /#{name}/ }
+        @payload.select { |tag| tag.name.to_s =~ /#{name}/ }
       end
 
       def add_tag(tag)
