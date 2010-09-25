@@ -39,6 +39,16 @@ module NBTUtils
           r + load.to_nbt_string(false)
         end
       end
+
+      def set_value(new_value, index)
+        unless new_value.kind_of?(NBTUtils::Tag)
+          t = @tag_type.new
+          t.value = new_value
+          new_value = t
+        end
+        
+        @payload[index] = new_value
+      end
     end
   end
 end

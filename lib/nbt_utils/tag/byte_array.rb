@@ -24,6 +24,12 @@ module NBTUtils
         result += len.to_binary_s
         result + @payload.to_binary_s
       end
+
+      def set_value(new_value, index)
+        b = ::BinData::Uint8.new
+        b.value = new_value
+        @payload[index] = to_binary_s
+      end
     end
   end
 end

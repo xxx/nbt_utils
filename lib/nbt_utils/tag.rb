@@ -47,7 +47,7 @@ module NBTUtils
       NBTUtils::Tag.tag_type_to_class(tag_type)
     end
 
-    def value=(new_value)
+    def set_value(new_value, index = nil)
       @payload.value = new_value
     end
 

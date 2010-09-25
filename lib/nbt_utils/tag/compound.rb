@@ -56,10 +56,15 @@ module NBTUtils
         @payload << tag
       end
 
-      # changing types is better done via delete/create/add
-      def update_tag(name, new_value)
+      # update one of my tags indirectly
+      def update_tag(name, new_value, index = nil)
         tag = find_tag(name)
-        tag.value = new_value
+        tag.set_value(new_value, index)
+      end
+
+      # update one of my tags directly. sort of wonky but here to conform to the api.
+      def set_value(new_value, index)
+        update_tag(index, new_value)
       end
 
       def remove_tag(name)
