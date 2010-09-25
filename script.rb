@@ -13,6 +13,12 @@ file = NBTUtils::File.new('doc/test.nbt')
 
 puts @compound.to_s
 
+@compound.update_tag('name', 'asdf')
+puts @compound.to_s
+
+@compound.remove_tag('name')
+puts @compound.to_s
+
 #puts @compound.to_nbt_string
 #Zlib::GzipWriter.open('lolwut.nbt') do |gz|
 #  gz.write @compound.to_nbt_string
@@ -26,6 +32,8 @@ puts @compound.to_s
 #  gz.write @compound.to_nbt_string
 #end
 
-#p @compound.find_tag('Test')
-#p @compound.find_tags(/(?:byte|int)Test/)
-#p @compound.find_tags 'intasdf'
+p @compound.find_tag(/Test/)
+p @compound.find_tag('Test')
+p @compound.find_tag('intTest')
+p @compound.find_tags(/(?:byte|int)Test/)
+p @compound.find_tags 'intasdf'

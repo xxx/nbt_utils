@@ -38,7 +38,11 @@ module NBTUtils
       end
 
       def find_tag(name)
-        @payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
+        if name.kind_of?(Regexp)
+          @payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
+        else
+          @payload.detect { |tag| tag.name.to_s == name }
+        end
       end
 
       def find_tags(name)
@@ -50,6 +54,16 @@ module NBTUtils
         raise DuplicateCompoundPayloadTagNameError if @tag_names.include?(tag.name)
         @tag_names << tag.name
         @payload << tag
+      end
+
+      # changing types is better done via delete/create/add
+      def update_tag(name, new_value)
+        tag = find_tag(name)
+        tag.value = new_value
+      end
+
+      def remove_tag(name)
+        @payload.delete find_tag(name)
       end
     end
   end

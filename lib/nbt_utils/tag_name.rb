@@ -9,5 +9,9 @@ module NBTUtils
     def value
       data
     end
+
+    def value=(other_value)
+      self.data = (other_value)
+    end
   end
 end

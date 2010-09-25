@@ -47,6 +47,10 @@ module NBTUtils
       NBTUtils::Tag.tag_type_to_class(tag_type)
     end
 
+    def value=(new_value)
+      @payload.value = new_value
+    end
+
     module ClassMethods
       def type_id(new_id = nil)
         if new_id
