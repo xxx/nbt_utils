@@ -21,20 +21,20 @@ module NBTUtils
         ret = (' ' * indent) + "TAG_List#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries of type TAG_#{@tag_type.to_s.split('::').last}\n"
         ret += (' ' * indent) + "{\n"
         @payload.each do |load|
-          ret += "#{load.to_s(indent + 2)}\n"
+          ret << "#{load.to_s(indent + 2)}\n"
         end
-        ret += (' ' * indent) + "}"
+        ret << (' ' * indent) + "}"
         ret
       end
 
       def to_nbt_string(named = true)
         result = named ? binary_type_id + name_to_nbt_string : ''
-        type =::BinData::Int8be.new
+        type = ::BinData::Int8be.new
         type.value = @tag_type.type_id
-        result += type.to_binary_s
+        result << type.to_binary_s
         len = ::BinData::Int32be.new
         len.value = @payload.length
-        result += len.to_binary_s
+        result << len.to_binary_s
         @payload.inject(result) do |r, load|
           r + load.to_nbt_string(false)
         end

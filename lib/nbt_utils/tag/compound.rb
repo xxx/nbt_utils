@@ -18,11 +18,11 @@ module NBTUtils
 
       def to_s(indent = 0)
         ret = (' ' * indent) + "TAG_Compound#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries\n"
-        ret += (' ' * indent) + "{\n"
+        ret << (' ' * indent) + "{\n"
         @payload.each do |load|
-          ret += "#{load.to_s(indent + 2)}\n"
+          ret << "#{load.to_s(indent + 2)}\n"
         end
-        ret += (' ' * indent) + "}"
+        ret << (' ' * indent) + "}"
 
         ret
       end

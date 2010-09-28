@@ -20,21 +20,17 @@ require 'zlib'
 #puts @compound.to_s
 
 #puts @compound.to_nbt_string
-#Zlib::GzipWriter.open('lolwut.nbt') do |gz|
-#  gz.write @compound.to_nbt_string
-#end
+#NBTUtils::File.new.write('biglolwut.nbt', @compound)
 
 #@compound = NBTUtils::File.new.read('doc/bigtest.nbt')
 #puts @compound.to_s
 
 
 @compound = NBTUtils::File.new.read('doc/test.mclevel')
-#puts @compound.to_s
+puts @compound.to_s
 
 #puts @compound.to_nbt_string
-#Zlib::GzipWriter.open('biglolwut.nbt') do |gz|
-#  gz.write @compound.to_nbt_string
-#end
+#NBTUtils::File.new.write('biglolwut.nbt', @compound)
 
 #p @compound.find_tag(/Test/)
 #p @compound.find_tag('Test')

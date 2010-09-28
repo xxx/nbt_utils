@@ -9,8 +9,9 @@ module NBTUtils
         read_name(io) if named
 
         len = ::BinData::Int32be.new.read(io).value
-        # signedness of the bytes in the array is not defined in the spec.
-        @payload = ::BinData::Array.new(:type => :uint8, :initial_length => len).read(io)
+        # use single string for the payload because an array means each byte is a
+        # separate object which is incredibly SLOW
+        @payload = ::BinData::String.new(:read_length => len).read(io)
       end
 
       def to_s(indent = 0)
@@ -21,7 +22,7 @@ module NBTUtils
         result = named ? binary_type_id + name_to_nbt_string : ''
         len = ::BinData::Int32be.new
         len.value = @payload.length
-        result += len.to_binary_s
+        result << len.to_binary_s
         result + @payload.to_binary_s
       end
 
