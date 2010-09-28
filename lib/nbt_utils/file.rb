@@ -6,14 +6,13 @@ module NBTUtils
 
     def read(path = @path)
       Zlib::GzipReader.open(path) do |f|
-        # ostensibly this will always be a single TAG_Compound, per the spec
-        last_byte = f.read(1).bytes.first
-        klass = NBTUtils::Tag.tag_type_to_class(last_byte)
-
-        @tag = klass.new(f, true)
+        @content = StringIO.new(f.read)
       end
 
-      @tag
+      last_byte = @content.read(1).bytes.first
+      klass = NBTUtils::Tag.tag_type_to_class(last_byte)
+
+      @tag = klass.new(@content, true)
     end
 
     def write(path = @path, tag = @tag)
