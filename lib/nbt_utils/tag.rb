@@ -17,10 +17,7 @@ module NBTUtils
     end
 
     def binary_type_id
-      # I hope i'm doing this wrong.
-      byte = ::BinData::Int8be.new
-      byte.value = type_id
-      byte.to_binary_s
+      type_id.chr
     end
 
     def to_s(indent = 0)
