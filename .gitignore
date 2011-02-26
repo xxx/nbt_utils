@@ -1,2 +1,4 @@
 .bundle/
 .idea/
+tmp
+nbt_utils*.gem
