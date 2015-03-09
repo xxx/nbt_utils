@@ -29,7 +29,7 @@ module NBTUtils
       def set_value(new_value, index)
         b = ::BinData::Uint8.new
         b.value = new_value
-        @payload[index] = to_binary_s
+        @payload[index] = b.to_binary_s
       end
     end
   end
