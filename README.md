@@ -3,12 +3,12 @@ nbt_utils
 
 Some classes for handling [Minecraft](http://minecraft.net) .nbt files.
 
-See [the spec](http://www.minecraft.net/docs/NBT.txt) for more info, also mirrored in the doc directory in a file named `NBT.txt`.
+See the spec (NBT.txt in doc directory) for more info.
 
 Installation
 ============
 
-Requires ruby 1.9 minimum. Tested with 1.9.2.
+Requires ruby 1.9 minimum. Tested with 1.9.2+
 
     gem install nbt_utils
 
@@ -19,12 +19,14 @@ Use
 
     require 'nbt_utils'
 
-    @tag = NBTUtils::File.new.read('some_nbt_file.nbt')
+    @file = NBTUtils::File.new
+    @tag = @file.read('some_nbt_file.nbt')
     puts @tag.to_s
+    @file.write('some_path.nbt', @tag, <compress? true/false>)
 
 Copyright
 =========
 
-Copyright (c) 2010 Michael Dungan, mpd@jesters-court.net, released under the MIT license.
+Copyright (c) 2010-2015 Michael Dungan, mpd@jesters-court.net, released under the MIT license.
 
-The files `NBT.txt`, `test.nbt`, and `bigtest.nbt` in the doc directory are mirrored from the Minecraft website and not covered under the above license.
+The files `NBT.txt`, `test.nbt`, `test_uncompressed.nbt`, `bigtest.nbt`, and `bigtest_uncompressed.nbt` in the doc directory are mirrored from the Minecraft website and not covered under the above license.
