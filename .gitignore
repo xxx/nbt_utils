@@ -2,3 +2,5 @@
 .idea/
 tmp
 nbt_utils*.gem
+
+*.swp
