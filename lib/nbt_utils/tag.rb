@@ -8,7 +8,7 @@ module NBTUtils
       base.extend ClassMethods
     end
 
-    def initialize(io, named = true)
+    def initialize(io, named: true)
       read_name(io) if named
       @payload = self.class.payload_class.new.read(io)
     end
@@ -23,12 +23,12 @@ module NBTUtils
 
     def to_s(indent = 0)
       klass = self.class.to_s.split('::').last
-      (' ' * indent) + "TAG_#{klass}#{@name ? "(\"#{@name}\")" : ''}: #{@payload.value}"
+      (' ' * indent) + "TAG_#{klass}#{name ? "(\"#{name}\")" : ''}: #{payload.value}"
     end
 
-    def to_nbt_string(named = true)
+    def to_nbt_string(named: true)
       result = named ? binary_type_id + name_to_nbt_string : ''
-      result + @payload.to_binary_s
+      result + payload.to_binary_s
     end
 
     def read_name(io)
@@ -37,7 +37,7 @@ module NBTUtils
 
     def name_to_nbt_string
       nm = NBTUtils::TagName.new
-      nm.data = @name
+      nm.data = name
       nm.to_binary_s
     end
 
@@ -46,7 +46,7 @@ module NBTUtils
     end
 
     def set_value(new_value, _index = nil)
-      @payload.value = new_value
+      payload.value = new_value
     end
 
     module ClassMethods

@@ -6,5 +6,5 @@ Bundler::GemHelper.install_tasks
 begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec)
-rescue LoadError
+rescue LoadError # rubocop:disable Lint/SuppressedException
 end

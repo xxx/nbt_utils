@@ -7,14 +7,14 @@ module NBTUtils
 
       type_id 10
 
-      def initialize(io, named = true)
+      def initialize(io, named: true)
         @payload = []
         @tag_names = []
         read_name(io) if named
 
         until (last_byte = io.read(1).bytes.first) == NBTUtils::Tag::End.type_id
           klass = tag_type_to_class(last_byte)
-          add_tag klass.new(io, true)
+          add_tag klass.new(io, named: true)
         end
       end
 
@@ -29,11 +29,11 @@ module NBTUtils
         ret
       end
 
-      def to_nbt_string(named = true)
+      def to_nbt_string(named: true)
         result = named ? binary_type_id + name_to_nbt_string : ''
 
         result = @payload.inject(result) do |r, load|
-          r + load.to_nbt_string(true)
+          r + load.to_nbt_string(named: true)
         end
 
         result + NBTUtils::Tag::End.new(nil).to_nbt_string

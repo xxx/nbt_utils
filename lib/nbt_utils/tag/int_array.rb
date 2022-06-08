@@ -7,7 +7,7 @@ module NBTUtils
 
       type_id 11
 
-      def initialize(io, named = true)
+      def initialize(io, named: true)
         read_name(io) if named
 
         len = ::BinData::Int32be.new.read(io).value
@@ -19,7 +19,7 @@ module NBTUtils
         (' ' * indent) + "TAG_Int_Array#{@name ? "(\"#{@name}\")" : ''}: [#{@payload.length} bytes]"
       end
 
-      def to_nbt_string(named = true)
+      def to_nbt_string(named: true)
         result = named ? binary_type_id + name_to_nbt_string : ''
         len = ::BinData::Int32be.new
         len.value = @payload.length

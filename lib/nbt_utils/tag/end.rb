@@ -7,15 +7,15 @@ module NBTUtils
 
       type_id 0
 
-      def initialize(_input, _named = false)
+      def initialize(...)
         @name = ''
       end
 
-      def to_s(_indent = 0)
+      def to_s(...)
         ''
       end
 
-      def to_nbt_string(_named = false)
+      def to_nbt_string(...)
         binary_type_id
       end
     end

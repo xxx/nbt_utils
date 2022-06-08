@@ -25,7 +25,7 @@ module NBTUtils
       last_byte = @content.read(1).bytes.first
       klass = NBTUtils::Tag.tag_type_to_class(last_byte)
 
-      @tag = klass.new(@content, true)
+      @tag = klass.new(@content, named: true)
     end
 
     def write(path = @path, tag = @tag, compressed = @compressed)

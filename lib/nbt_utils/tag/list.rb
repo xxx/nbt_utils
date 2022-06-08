@@ -7,7 +7,7 @@ module NBTUtils
 
       type_id 9
 
-      def initialize(io, named = true)
+      def initialize(io, named: true)
         @payload = []
         read_name(io) if named
 
@@ -15,7 +15,7 @@ module NBTUtils
         @tag_type = NBTUtils::Tag.tag_type_to_class(tag_id)
         len = ::BinData::Int32be.new.read(io).value
         len.times do
-          @payload << @tag_type.new(io, false)
+          @payload << @tag_type.new(io, named: false)
         end
       end
 
@@ -30,7 +30,7 @@ module NBTUtils
         ret
       end
 
-      def to_nbt_string(named = true)
+      def to_nbt_string(named: true)
         result = named ? binary_type_id + name_to_nbt_string : ''
         type = ::BinData::Int8be.new
         type.value = @tag_type.type_id
@@ -39,7 +39,7 @@ module NBTUtils
         len.value = @payload.length
         result << len.to_binary_s
         @payload.inject(result) do |r, load|
-          r + load.to_nbt_string(false)
+          r + load.to_nbt_string(named: false)
         end
       end
 
