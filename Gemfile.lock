@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nbt_utils (0.0.4)
+    nbt_utils (0.5.0)
       bindata (~> 2)
 
 GEM
