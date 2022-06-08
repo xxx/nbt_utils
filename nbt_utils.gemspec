@@ -13,10 +13,9 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.3.6"
 
-  s.add_dependency "bindata", "~> 1.3"
-  s.add_development_dependency "bundler", "~> 1"
+  s.add_dependency "bindata", "~> 2"
 
-  s.required_ruby_version = ">= 1.9"
+  s.required_ruby_version = ">= 2.7"
 
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
