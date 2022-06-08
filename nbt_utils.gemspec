@@ -15,6 +15,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency "bindata", "~> 2"
   s.add_development_dependency "rspec", "~> 3"
+  s.add_development_dependency "rubocop", "~> 1"
+  s.add_development_dependency "rubocop-rspec", "~> 2"
+  s.add_development_dependency "rubocop-performance", "~> 1"
 
   s.required_ruby_version = ">= 2.7"
 
