@@ -19,11 +19,11 @@ module NBTUtils
 
       def to_s(indent = 0)
         ret = (' ' * indent) + "TAG_List#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries of type TAG_#{@tag_type.to_s.split('::').last}\n"
-        ret << (' ' * indent) + "{\n"
+        ret << ((' ' * indent) + "{\n")
         @payload.each do |load|
           ret << "#{load.to_s(indent + 2)}\n"
         end
-        ret << (' ' * indent) + "}"
+        ret << ((' ' * indent) + '}')
         ret
       end
 
@@ -41,12 +41,12 @@ module NBTUtils
       end
 
       def set_value(new_value, index)
-        unless new_value.kind_of?(NBTUtils::Tag)
+        unless new_value.is_a?(NBTUtils::Tag)
           t = @tag_type.new
           t.value = new_value
           new_value = t
         end
-        
+
         @payload[index] = new_value
       end
     end

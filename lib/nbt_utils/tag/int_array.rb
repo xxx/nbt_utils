@@ -3,14 +3,14 @@ module NBTUtils
     class IntArray
       include NBTUtils::Tag
 
-      type_id 11 
+      type_id 11
 
       def initialize(io, named = true)
         read_name(io) if named
 
         len = ::BinData::Int32be.new.read(io).value
 
-        @payload = ::BinData::Array.new(:type => :int32be, :initial_length => len).read(io)
+        @payload = ::BinData::Array.new(type: :int32be, initial_length: len).read(io)
       end
 
       def to_s(indent = 0)

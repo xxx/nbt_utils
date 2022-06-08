@@ -11,7 +11,7 @@ module NBTUtils
         len = ::BinData::Int32be.new.read(io).value
         # use single string for the payload because an array means each byte is a
         # separate object which is incredibly SLOW
-        @payload = ::BinData::String.new(:read_length => len).read(io)
+        @payload = ::BinData::String.new(read_length: len).read(io)
       end
 
       def to_s(indent = 0)

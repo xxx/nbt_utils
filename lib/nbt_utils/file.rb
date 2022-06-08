@@ -20,7 +20,6 @@ module NBTUtils
         @compressed = false
       end
 
-
       last_byte = @content.read(1).bytes.first
       klass = NBTUtils::Tag.tag_type_to_class(last_byte)
 
@@ -33,9 +32,7 @@ module NBTUtils
           gz.write tag.to_nbt_string
         end
       else
-        ::File.open(path, 'w') do |f|
-          f.write tag.to_nbt_string
-        end
+        ::File.write(path, tag.to_nbt_string)
       end
     end
   end

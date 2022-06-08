@@ -1,7 +1,6 @@
 module NBTUtils
   module Tag
-    attr_reader :name
-    attr_reader :payload
+    attr_reader :name, :payload
 
     def self.included(base)
       base.extend ClassMethods
@@ -11,7 +10,7 @@ module NBTUtils
       read_name(io) if named
       @payload = self.class.payload_class.new.read(io)
     end
-    
+
     def type_id
       self.class.type_id
     end
@@ -44,7 +43,7 @@ module NBTUtils
       NBTUtils::Tag.tag_type_to_class(tag_type)
     end
 
-    def set_value(new_value, index = nil)
+    def set_value(new_value, _index = nil)
       @payload.value = new_value
     end
 
@@ -67,8 +66,6 @@ module NBTUtils
     def self.tag_type_to_class(tag_type)
       @tag_types[tag_type.to_i]
     end
-
-    protected
 
     def self.add_tag_type(index, tag_type)
       @tag_types ||= []

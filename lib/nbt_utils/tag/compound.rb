@@ -18,11 +18,11 @@ module NBTUtils
 
       def to_s(indent = 0)
         ret = (' ' * indent) + "TAG_Compound#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries\n"
-        ret << (' ' * indent) + "{\n"
+        ret << ((' ' * indent) + "{\n")
         @payload.each do |load|
           ret << "#{load.to_s(indent + 2)}\n"
         end
-        ret << (' ' * indent) + "}"
+        ret << ((' ' * indent) + '}')
 
         ret
       end
@@ -38,7 +38,7 @@ module NBTUtils
       end
 
       def find_tag(name)
-        if name.kind_of?(Regexp)
+        if name.is_a?(Regexp)
           @payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
         else
           @payload.detect { |tag| tag.name.to_s == name }
@@ -52,6 +52,7 @@ module NBTUtils
       def add_tag(tag)
         raise MissingCompoundPayloadTagNameError if tag.name.nil?
         raise DuplicateCompoundPayloadTagNameError if @tag_names.include?(tag.name)
+
         @tag_names << tag.name
         @payload << tag
       end
