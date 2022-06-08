@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Short # signed, per spec
+    # signed, per spec
+    class Short
       include NBTUtils::Tag
 
       type_id 2

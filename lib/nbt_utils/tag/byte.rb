@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Byte # signed, per spec
+    # signed, per spec
+    class Byte
       include NBTUtils::Tag
 
       type_id 1

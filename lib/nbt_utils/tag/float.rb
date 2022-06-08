@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Float # signed, per spec
+    # signed, per spec
+    class Float
       include NBTUtils::Tag
 
       type_id 5

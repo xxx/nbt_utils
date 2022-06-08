@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
     attr_reader :name, :payload

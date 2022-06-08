@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe NBTUtils::TagName do
   subject(:tag_name) { described_class.new }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path('lib/nbt_utils/version', __dir__)
 
 Gem::Specification.new do |s|
@@ -21,7 +23,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.7'
 
   s.files        = `git ls-files`.split("\n")
-  s.executables  = `git ls-files`.split("\n").map { |f| f =~ %r{^bin/(.*)} ? Regexp.last_match(1) : nil }.compact
+  s.executables  = `git ls-files`.split("\n").filter_map { |f| f =~ %r{^bin/(.*)} ? Regexp.last_match(1) : nil }
   s.require_path = 'lib'
   s.metadata['rubygems_mfa_required'] = 'true'
 end

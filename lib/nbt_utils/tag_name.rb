@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NBTUtils
   class TagName < ::BinData::Record
     # Spec says this is a TAG_Short, which is signed. Staying strict

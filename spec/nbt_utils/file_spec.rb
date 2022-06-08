@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe NBTUtils::File do
   let(:file) { described_class.new(File.expand_path("../../../doc/#{fixture}", __FILE__)) }
   let(:fixture) { 'test_uncompressed.nbt' }

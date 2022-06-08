@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nbt_utils'
 
 require 'support/shared_examples/a_tag'

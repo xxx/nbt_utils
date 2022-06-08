@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Int # signed, per spec
+    # signed, per spec
+    class Int
       include NBTUtils::Tag
 
       type_id 3

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NBTUtils
   class File
     def initialize(path = nil)

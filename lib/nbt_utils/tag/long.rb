@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Long # signed, per spec
+    # signed, per spec
+    class Long
       include NBTUtils::Tag
 
       type_id 4

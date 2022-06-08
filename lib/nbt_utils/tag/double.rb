@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module NBTUtils
   module Tag
-    class Double # signed, per spec
+    # signed, per spec
+    class Double
       include NBTUtils::Tag
 
       type_id 6
