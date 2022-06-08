@@ -15,10 +15,10 @@ Requires Ruby 2.7 minimum.
 ```ruby
 require 'nbt_utils'
 
-@file = NBTUtils::File.new
-@tag = @file.read('some_nbt_file.nbt')
-puts @tag.to_s
-@file.write('some_new_path.nbt', @tag, true) # true / false to gzip automatically
+file = NBTUtils::File.new
+tag = file.read('some_nbt_file.nbt')
+puts tag.to_s
+file.write('some_new_path.nbt', tag, true) # true / false to gzip automatically
 ```
 
 ### Copyright
