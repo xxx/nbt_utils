@@ -27,5 +27,11 @@ Metrics/PerceivedComplexity:
 Metrics/MethodLength:
   Enabled: false
 
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false

@@ -10,7 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ['mpd@jesters-court.net']
   s.homepage    = 'https://github.com/xxx/nbt_utils'
   s.summary     = 'Set of classes to read and write Minecraft .nbt files'
-  s.description = 'Some classes to read and write Minecraft .nbt files. See http://www.minecraft.net/docs/NBT.txt for format description.'
+  s.description = 'Some classes to read and write Minecraft .nbt files. '\
+                  'See NBT.txt in the /doc directory for format description.'
 
   s.required_rubygems_version = '>= 1.3.6'
 
