@@ -16,21 +16,21 @@ module NBTUtils
       end
 
       def to_s(indent = 0)
-        (' ' * indent) + "TAG_Int_Array#{@name ? "(\"#{@name}\")" : ''}: [#{@payload.length} bytes]"
+        (' ' * indent) + "TAG_Int_Array#{name ? "(\"#{name}\")" : ''}: [#{payload.length} bytes]"
       end
 
       def to_nbt_string(named: true)
         result = named ? binary_type_id + name_to_nbt_string : ''
         len = ::BinData::Int32be.new
-        len.value = @payload.length
+        len.value = payload.length
         result << len.to_binary_s
-        result + @payload.to_binary_s
+        result + payload.to_binary_s
       end
 
       def set_value(new_value, index)
         b = ::BinData::Int32be.new
         b.value = new_value
-        @payload[index] = b.to_binary_s
+        payload[index] = b.to_binary_s
       end
     end
   end

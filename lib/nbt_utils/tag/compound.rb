@@ -7,6 +7,8 @@ module NBTUtils
 
       type_id 10
 
+      attr_reader :tag_names
+
       def initialize(io, named: true)
         @payload = []
         @tag_names = []
@@ -19,9 +21,9 @@ module NBTUtils
       end
 
       def to_s(indent = 0)
-        ret = (' ' * indent) + "TAG_Compound#{@name ? "(\"#{@name}\")" : ''}: #{@payload.length} entries\n"
+        ret = (' ' * indent) + "TAG_Compound#{name ? "(\"#{name}\")" : ''}: #{payload.length} entries\n"
         ret << ("#{' ' * indent}{\n")
-        @payload.each do |load|
+        payload.each do |load|
           ret << "#{load.to_s(indent + 2)}\n"
         end
         ret << ("#{' ' * indent}}")
@@ -32,7 +34,7 @@ module NBTUtils
       def to_nbt_string(named: true)
         result = named ? binary_type_id + name_to_nbt_string : ''
 
-        result = @payload.inject(result) do |r, load|
+        result = payload.inject(result) do |r, load|
           r + load.to_nbt_string(named: true)
         end
 
@@ -41,22 +43,22 @@ module NBTUtils
 
       def find_tag(name)
         if name.is_a?(Regexp)
-          @payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
+          payload.detect { |tag| tag.name.to_s =~ /#{name}/ }
         else
-          @payload.detect { |tag| tag.name.to_s == name }
+          payload.detect { |tag| tag.name.to_s == name }
         end
       end
 
       def find_tags(name)
-        @payload.select { |tag| tag.name.to_s =~ /#{name}/ }
+        payload.select { |tag| tag.name.to_s =~ /#{name}/ }
       end
 
       def add_tag(tag)
         raise MissingCompoundPayloadTagNameError if tag.name.nil?
-        raise DuplicateCompoundPayloadTagNameError if @tag_names.include?(tag.name)
+        raise DuplicateCompoundPayloadTagNameError if tag_names.include?(tag.name)
 
-        @tag_names << tag.name
-        @payload << tag
+        tag_names << tag.name
+        payload << tag
       end
 
       # update one of my tags indirectly
@@ -71,7 +73,7 @@ module NBTUtils
       end
 
       def remove_tag(name)
-        @payload.delete find_tag(name)
+        payload.delete find_tag(name)
       end
     end
   end
